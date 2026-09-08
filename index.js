@@ -69,19 +69,18 @@ function game() {
         const computerSelection = computerPlay();
         console.log(`Computer chose: ${computerSelection}.`)
         const roundResult = playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase());
-        alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}`);
         if (roundResult == -1) {
-            alert(`Computer won round.\n\n${computerWinMessages[Math.floor(Math.random() * computerWinMessages.length)]}`);
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nComputer won round.\n${computerWinMessages[Math.floor(Math.random() * computerWinMessages.length)]}`);
             console.log("Computer won round.");
             computerScore += 1;
         }
         if (roundResult == 1) {
-            alert(`Player won round.\n\n${playerWinMessages[Math.floor(Math.random() * playerWinMessages.length)]}`);
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nPlayer won round.\n${playerWinMessages[Math.floor(Math.random() * playerWinMessages.length)]}`);
             console.log("Player won round.");
             playerScore += 1;
         }
         if (roundResult == 0) {
-            alert(`Round ended in a draw.\n\n${drawMessages[Math.floor(Math.random() * drawMessages.length)]}`);
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nRound ended in a draw.\n${drawMessages[Math.floor(Math.random() * drawMessages.length)]}`);
             console.log("Round ended in a draw.");
         }
     }
@@ -89,8 +88,12 @@ function game() {
         alert(`Player won with a score of ${playerScore}-${computerScore}. Congratulations!`);
     }
     if (computerScore === 3) {
-        alert(`Computer won with a score of ${computerScore}-${playerScore}. Better luck next time!`);
+        alert(`Computer won with a score of ${computerScore}-${playerScore}. Better luck next time :(`);
     }
 }
 
-game();
+let playAgain = true;
+while (playAgain) {
+    game();
+    playAgain = confirm("Do you want to play again? Click 'OK' for yes or 'Cancel' for no.");
+}
