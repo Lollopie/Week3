@@ -47,16 +47,21 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+
     alert("Before you start: this game also prints extra details to your browser's console (like exactly what you and the computer picked each round).\n\nYou don't NEED it to play, but it's helpful and fun to check!\n\nTo open it: right-click anywhere on the page → 'Inspect' → click the 'Console' tab. (Or press F12 on Windows, or Cmd+Option+J on Mac.)");
+
     alert("Welcome to Rock, Paper, Scissors!\n\nChoose wisely: Rock crushes Scissors, Scissors cuts Paper, and Paper covers Rock.\n\nFirst to 3 wins becomes the official champion. The computer has no mercy… probably :).");
+
     while (playerScore < 3 && computerScore < 3) {
         let playerSelection = prompt("Rock, Paper, Scissors");
         console.log(`Player chose: ${playerSelection}`);
-       if (playerSelection === null) {
+
+        if (playerSelection === null) {
             console.log("Cancelling Game.");
             alert("Game cancelled. Thanks for playing!");
             break;
         }
+
         playerSelection = playerSelection.trim();
         let isValid = false;
         for (let i = 0; i < options.length; i++) {
@@ -67,27 +72,31 @@ function game() {
         }
         if (!isValid) {
             alert("Invalid Choice. Please choose Rock, Paper, or Scissors.");
-            console.log("Invalid Choice. Continuing.")
+            console.log("Invalid Choice. Continuing.");
             continue;
         }
+
         const computerSelection = computerPlay();
-        console.log(`Computer chose: ${computerSelection}.`)
+        console.log(`Computer chose: ${computerSelection}.`);
+
         const roundResult = playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase());
+
         if (roundResult == -1) {
-            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nComputer won round.\n${computerWinMessages[Math.floor(Math.random() * computerWinMessages.length)]}`);
-            console.log("Computer won round.");
             computerScore += 1;
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nComputer won round.\n${computerWinMessages[Math.floor(Math.random() * computerWinMessages.length)]}\n\nScore: You ${playerScore} - ${computerScore} Computer`);
+            console.log("Computer won round.");
         }
         if (roundResult == 1) {
-            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nPlayer won round.\n${playerWinMessages[Math.floor(Math.random() * playerWinMessages.length)]}`);
-            console.log("Player won round.");
             playerScore += 1;
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nPlayer won round.\n${playerWinMessages[Math.floor(Math.random() * playerWinMessages.length)]}\n\nScore: You ${playerScore} - ${computerScore} Computer`);
+            console.log("Player won round.");
         }
         if (roundResult == 0) {
-            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nRound ended in a draw.\n${drawMessages[Math.floor(Math.random() * drawMessages.length)]}`);
+            alert(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}\n\nRound ended in a draw.\n${drawMessages[Math.floor(Math.random() * drawMessages.length)]}\n\nScore: You ${playerScore} - ${computerScore} Computer`);
             console.log("Round ended in a draw.");
         }
     }
+
     if (playerScore === 3) {
         alert(`Player won with a score of ${playerScore}-${computerScore}. Congratulations!`);
     }
