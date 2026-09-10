@@ -50,8 +50,9 @@ function game() {
     while (playerScore < 3 && computerScore < 3) {
         let playerSelection = prompt("Rock, Paper, Scissors");
         console.log(`Player chose: ${playerSelection}`);
-        if (playerSelection === null) {
-            console.log("Cancelling Game.")
+       if (playerSelection === null) {
+            console.log("Cancelling Game.");
+            alert("Game cancelled. Thanks for playing!");
             break;
         }
         playerSelection = playerSelection.trim();
