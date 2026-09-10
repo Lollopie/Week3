@@ -45,6 +45,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    alert("Before you start: this game also prints extra details to your browser's console (like exactly what you and the computer picked each round).\n\nYou don't NEED it to play, but it's helpful and fun to check!\n\nTo open it: right-click anywhere on the page → 'Inspect' → click the 'Console' tab. (Or press F12 on Windows, or Cmd+Option+J on Mac.)");
     alert("Welcome to Rock, Paper, Scissors!\n\nChoose wisely: Rock crushes Scissors, Scissors cuts Paper, and Paper covers Rock.\n\nFirst to 3 wins becomes the official champion. The computer has no mercy… probably :).");
     while (playerScore < 3 && computerScore < 3) {
         let playerSelection = prompt("Rock, Paper, Scissors");
