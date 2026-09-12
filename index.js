@@ -22,6 +22,29 @@ function computerPlay() {
     return options[choice];
 };
 
+function getPlayerSelection() {
+    while (true) {
+        let playerSelection = prompt("Rock, Paper, Scissors");
+        console.log(`Player chose: ${playerSelection}`);
+
+        if (playerSelection === null) {
+            console.log("Cancelling Game.");
+            alert("Game cancelled. Thanks for playing!");
+            return "cancelled";
+        }
+
+        playerSelection = playerSelection.trim();
+        for (let i = 0; i < options.length; i++) {
+            if (playerSelection.toLowerCase() === options[i].toLowerCase()) {
+                return options[i];
+            }
+        }
+
+        alert("Invalid input. Please try again.");
+        console.log("Invalid input. Please try again.");
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return 0;
@@ -65,27 +88,10 @@ function game() {
     }
 
     while (playerScore < 3 && computerScore < 3) {
-        let playerSelection = prompt("Rock, Paper, Scissors");
-        console.log(`Player chose: ${playerSelection}`);
+        let playerSelection = getPlayerSelection();
 
-        if (playerSelection === null) {
-            console.log("Cancelling Game.");
-            alert("Game cancelled. Thanks for playing!");
+        if (playerSelection === "cancelled") {
             return "cancelled";
-        }
-
-        playerSelection = playerSelection.trim();
-        let isValid = false;
-        for (let i = 0; i < options.length; i++) {
-            if (playerSelection.toLowerCase() === options[i].toLowerCase()) {
-                isValid = true;
-                break;
-            }
-        }
-        if (!isValid) {
-            alert("Invalid Choice. Please choose Rock, Paper, or Scissors.");
-            console.log("Invalid Choice. Continuing.");
-            continue;
         }
 
         const computerSelection = computerPlay();
