@@ -93,6 +93,12 @@ function game() {
 
         const roundResult = playRound(playerSelection.toLowerCase(), computerSelection.toLowerCase());
 
+        if (roundResult === null) {
+            console.error(`Unexpected result: playRound(${playerSelection}, ${computerSelection}) returned null.`);
+            alert("Something went wrong processing that round. Please try again.");
+            continue;
+        }
+
         if (roundResult === -1) {
             computerScore += 1;
             alert([
