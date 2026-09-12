@@ -125,11 +125,6 @@ function game() {
             ].join('\n'));
             console.log("Round ended in a draw.");
         }
-        if (roundResult === null) {
-            alert("Invalid Choice. Please choose Rock, Paper, or Scissors.");
-            console.log("Invalid Choice. Continuing.");
-            continue;
-        }
     }
 
     if (playerScore === 3) {
